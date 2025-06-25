@@ -1,15 +1,18 @@
 @use '@scss/common' as *;
 
+.wrapper {
+  position: fixed;
+  z-index: 100;
+  top: 0;
+  width: 100%;
+}
+
 .cloudHeader {
   display: flex;
   align-items: center;
   justify-content: space-between;
   border-bottom: 1px solid var(--theme-border-color);
   background: var(--theme-bg);
-  position: fixed;
-  z-index: 100;
-  top: 0;
-  width: 100%;
   height: var(--header-height);
   padding: var(--base) var(--gutter-h);
 
@@ -30,28 +33,31 @@
     justify-content: flex-end;
     flex: 0 0 auto;
 
-    ul {
-      display: flex;
-      align-items: center;
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    a {
+      text-decoration: none;
+      font-size: 16px;
+      opacity: 1;
+      white-space: nowrap;
 
-      li {
-        margin-left: 20px;
-        width: 100%;
-
-        a {
-          text-decoration: none;
-          font-size: 16px;
-          opacity: 1;
-          white-space: nowrap;
-
-          &:hover {
-            opacity: 0.75;
-          }
-        }
+      &:hover {
+        opacity: 0.75;
       }
     }
   }
+}
+
+.topBar {
+  max-height: 100px;
+  opacity: 1;
+  overflow: hidden;
+  pointer-events: auto;
+  transition:
+    opacity 0.5s,
+    max-height 0.5s;
+}
+
+.topBarHidden {
+  max-height: 0;
+  opacity: 0;
+  pointer-events: none;
 }

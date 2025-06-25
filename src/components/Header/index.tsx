@@ -13,7 +13,11 @@ import { DesktopNav } from './DesktopNav/index'
 import classes from './index.module.scss'
 import { MobileNav, modalSlug as mobileNavModalSlug } from './MobileNav/index'
 
-export const Header: React.FC<MainMenu> = ({ menuCta, tabs }) => {
+export const Header: React.FC<
+  {
+    children?: React.ReactNode
+  } & MainMenu
+> = ({ children, menuCta, tabs }) => {
   const { isModalOpen } = useModal()
   const isMobileNavOpen = isModalOpen(mobileNavModalSlug)
   const { headerTheme } = useHeaderObserver()
@@ -26,10 +30,14 @@ export const Header: React.FC<MainMenu> = ({ menuCta, tabs }) => {
     } else {
       setHideBackground(y < 30)
     }
+    document.documentElement.style.setProperty('--top-bar-height', y > 30 ? '0px' : '3rem')
   }, [y, isMobileNavOpen])
 
   return (
-    <div data-theme={headerTheme}>
+    <div className={classes.wrapper} data-theme={headerTheme}>
+      <div className={classes.topBar} id="topBar">
+        {children}
+      </div>
       <header
         className={[
           classes.header,

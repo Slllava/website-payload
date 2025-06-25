@@ -75,6 +75,7 @@ import { Footer } from './globals/Footer'
 import { GetStarted } from './globals/GetStarted'
 import { MainMenu } from './globals/MainMenu'
 import { PartnerProgram } from './globals/PartnerProgram'
+import { TopBar } from './globals/TopBar'
 import { opsCounterPlugin } from './plugins/opsCounter'
 import redeployWebsite from './scripts/redeployWebsite'
 import { refreshMdxToLexical, syncDocs } from './scripts/syncDocs'
@@ -352,6 +353,7 @@ export default buildConfig({
           'templateCards',
           'Code',
           'downloadBlock',
+          'commandLine',
         ],
       }),
     ],
@@ -378,7 +380,7 @@ export default buildConfig({
       path: '/refresh/mdx-to-lexical',
     },
   ],
-  globals: [Footer, MainMenu, GetStarted, PartnerProgram],
+  globals: [Footer, MainMenu, GetStarted, PartnerProgram, TopBar],
   graphQL: {
     disablePlaygroundInProduction: false,
   },
